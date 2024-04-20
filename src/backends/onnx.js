@@ -31,14 +31,14 @@ export const executionProviders = [
 
 if (typeof process !== 'undefined' && process?.release?.name === 'node') {
     // Running in a node-like environment.
-    ONNX = ONNX_NODE.default ?? ONNX_NODE;
+    ONNX = ONNX_NODE;
 
     // Add `cpu` execution provider, with higher precedence that `wasm`.
     executionProviders.unshift('cpu');
     executionProviders.unshift('cuda');
 } else {
     // Running in a browser-environment
-    ONNX = ONNX_WEB.default ?? ONNX_WEB;
+    ONNX = ONNX_WEB;
 
     // SIMD for WebAssembly does not operate correctly in some recent versions of iOS (16.4.x).
     // As a temporary fix, we disable it for now.
