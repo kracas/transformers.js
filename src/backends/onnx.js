@@ -35,7 +35,7 @@ if (typeof process !== 'undefined' && process?.release?.name === 'node') {
 
     // Add `cpu` execution provider, with higher precedence that `wasm`.
     executionProviders.unshift('cpu');
-
+    executionProviders.unshift('cuda');
 } else {
     // Running in a browser-environment
     ONNX = ONNX_WEB.default ?? ONNX_WEB;
